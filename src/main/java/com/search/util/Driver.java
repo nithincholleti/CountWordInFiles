@@ -139,7 +139,7 @@ public class Driver {
 			System.out.println("Do you still want to add files ? (Y/N) \r\n");
 			loopChar = sc.nextLine();
 		}
-		while (true) {
+		while (listFile.size()>0 && true) {
 			System.out.println("Enter the outfile directory path; Example: C:\\output\\");
 			String outputDirectory = sc.nextLine();
 			if (dr.fileIsDirectory(outputDirectory)) {
