@@ -26,7 +26,6 @@ public class ReaderThread implements Runnable {
 			inputStream = new FileInputStream(fileName);
 			sc = new Scanner(inputStream, "UTF-8");
 			while (sc.hasNext()) {
-				//System.out.println(sc.next());
 				queue.put(sc.next());
 			}
 		} catch (IOException | InterruptedException e) {

@@ -27,7 +27,7 @@ public class Driver {
 		// batch size must be configured accordingly
 		static public volatile int batch_size = 10000;
 		// number of worker threads are proportional to number of cores in the cpu
-		static public volatile int nWorker = 1;
+		static public volatile int nWorker = 2;
 		// one thread per hard disc, if files are sitting on different hard discs
 		// threads can be configured accordingly
 		static public volatile int nReaderThreads = 1;
@@ -88,7 +88,9 @@ public class Driver {
 	}
 
 	public void startProcessingFile(List<String> listFile) {
-
+		/*
+		 * optimization: We can use dequeue where one worker thread removes from front and second worker thread removes from end
+		 */
 		BlockingQueue<String> queue = new LinkedBlockingQueue<String>(Control.batch_size);
 		CombineMaps combine = new CombineMaps(new HashMap<String, Long>());
 
@@ -106,6 +108,9 @@ public class Driver {
 			readerService.submit(reader);
 		}
 
+		/*
+		 * This method also can be further optimized.
+		 */
 		ExecutorService executorService = Executors.newFixedThreadPool(Control.nWorker);
 		for (int i = 0; i < Control.nWorker; i++) {
 			WorkerMaps wm = new WorkerMaps(queue, latch);
@@ -126,8 +131,10 @@ public class Driver {
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}
+		/*
+		 * This method also can be further optimized.
+		 */
 		result = combine.aggregateData(masterList);
-		// combine.displayData();
 	}
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException {

@@ -19,7 +19,6 @@ public class CombineMaps {
 
 	public HashMap<String, Long> aggregateData(List<Future<HashMap<String, Long>>> masterList) {
 		for (Future<HashMap<String, Long>> futureResult : masterList) {
-			// for (HashMap<String, Long> item : masterList) {
 			HashMap<String, Long> hm = null;
 			try {
 				hm = futureResult.get();
