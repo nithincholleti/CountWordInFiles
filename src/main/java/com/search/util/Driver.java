@@ -89,7 +89,8 @@ public class Driver {
 
 	public void startProcessingFile(List<String> listFile) {
 		/*
-		 * optimization: We can use dequeue where one worker thread removes from front and second worker thread removes from end
+		 * optimization 1: We can use dequeue where one worker thread removes from front and second worker thread removes from end
+		 * optimization 2: we can use a list to split work among threads using different start and end indexes for each thread 
 		 */
 		BlockingQueue<String> queue = new LinkedBlockingQueue<String>(Control.batch_size);
 		CombineMaps combine = new CombineMaps(new HashMap<String, Long>());
