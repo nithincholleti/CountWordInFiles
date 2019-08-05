@@ -24,8 +24,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class Driver {
 
 	static class Control {
-		static public volatile int batch_size = 30000;
+		// batch size must be configured accordingly
+		static public volatile int batch_size = 10000;
+		// number of worker threads are proportional to number of cores in the cpu
 		static public volatile int nWorker = 1;
+		// one thread per hard disc, if files are sitting on different hard discs
+		// threads can be configured accordingly
 		static public volatile int nReaderThreads = 1;
 	}
 
@@ -53,6 +57,9 @@ public class Driver {
 		return isExists;
 	}
 
+	/*
+	 *  this method writes results to an output file
+	 */
 	public void writeResultsToOutPutFile() {
 		String resultFile = outPutFileDirectory + "\\Result.txt";
 		File file = new File(resultFile);
@@ -109,7 +116,9 @@ public class Driver {
 		executorService.shutdown();
 
 		while (!readerService.isTerminated() && !executorService.isTerminated()) {
-			// wait for infinity time
+			/*
+			 * wait for the threads to finish the task
+			 */
 		}
 
 		try {
@@ -139,7 +148,7 @@ public class Driver {
 			System.out.println("Do you still want to add files ? (Y/N) \r\n");
 			loopChar = sc.nextLine();
 		}
-		while (listFile.size()>0 && true) {
+		while (listFile.size() > 0 && true) {
 			System.out.println("Enter the outfile directory path; Example: C:\\output\\");
 			String outputDirectory = sc.nextLine();
 			if (dr.fileIsDirectory(outputDirectory)) {

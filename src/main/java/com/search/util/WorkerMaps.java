@@ -11,7 +11,7 @@ public class WorkerMaps implements Callable<HashMap<String, Long>> {
 	private HashMap<String, Long> storeMap;
 	protected BlockingQueue<String> queue;
 	private CountDownLatch latch = null;
-	
+
 	WorkerMaps(BlockingQueue<String> queue, CountDownLatch latch) {
 		this.storeMap = new HashMap<String, Long>();
 		this.queue = queue;
@@ -19,7 +19,7 @@ public class WorkerMaps implements Callable<HashMap<String, Long>> {
 	}
 
 	public HashMap<String, Long> call() {
-		while ( !(latch.getCount() == 0 && queue.isEmpty()) ) {
+		while (!(latch.getCount() == 0 && queue.isEmpty())) {
 			if (!queue.isEmpty()) {
 				String str = queue.poll();
 				try {
@@ -41,15 +41,13 @@ public class WorkerMaps implements Callable<HashMap<String, Long>> {
 	}
 
 	private void updateMap(String in) {
-		String chk = null;
-		if (in != null) {
-			chk = in.toLowerCase();
-			if (storeMap.containsKey(chk)) {
-				Long value = storeMap.get(chk);
+		if (in != null && in.length() > 0) {
+			if (storeMap.containsKey(in)) {
+				Long value = storeMap.get(in);
 				AtomicLong temp = new AtomicLong(value);
-				storeMap.put(chk, temp.incrementAndGet());
+				storeMap.put(in, temp.incrementAndGet());
 			} else {
-				storeMap.put(chk, 1L);
+				storeMap.put(in, 1L);
 			}
 		}
 	}

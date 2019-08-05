@@ -23,7 +23,6 @@ public class CombineMaps {
 			HashMap<String, Long> hm = null;
 			try {
 				hm = futureResult.get();
-				;
 			} catch (ExecutionException | InterruptedException e) {
 				e.printStackTrace();
 			}

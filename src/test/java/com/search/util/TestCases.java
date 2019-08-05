@@ -18,7 +18,7 @@ public class TestCases {
 	@Test
 	public void testForValidateUserInput() {
 		Driver drive = new Driver();
-		String fileName = "C:\\Users\\nitin.cholleti\\Downloads\\TestData\\Test_File_4.txt";
+		String fileName = "C:\\Users\\nithi\\Desktop\\Search_Words\\Sample Files\\Test_File_4.txt";
 		assertTrue(drive.validateUserInput(fileName));
 		fileName = "abc.txt";
 		assertFalse(drive.validateUserInput(fileName));
@@ -29,7 +29,7 @@ public class TestCases {
 	@Test
 	public void testForValidDirectory() {
 		Driver drive = new Driver();
-		String fileName = "C:\\Users\\nitin.cholleti\\Downloads\\TestData\\";
+		String fileName = "C:\\Users\\nithi\\Desktop\\Search_Words\\Sample Files\\";
 		assertTrue(drive.fileIsDirectory(fileName));
 		fileName = "X:\\Users\\nitin.cholleti\\Downloads\\TestData\\";
 		assertFalse(drive.validateUserInput(fileName));
@@ -61,7 +61,41 @@ public class TestCases {
 		expectedResult.put("must", 3L);
 		expectedResult.put("to", 3L);
 
-		String fileName = "C:\\Users\\nitin.cholleti\\Downloads\\TestData\\Test_File_4.txt";
+		String fileName = "C:\\Users\\nithi\\Desktop\\Search_Words\\Sample Files\\Test_File_4.txt";
+		List<String> list = new ArrayList<>();
+		list.add(fileName);
+		drive.startProcessingFile(list);
+
+		assertTrue(compareMaps(expectedResult, drive.getResult()));
+		expectedResult.remove("to");
+		assertFalse(compareMaps(expectedResult, drive.getResult()));
+	}
+	
+	@Test
+	public void matchWordsWithexpectedResultSingleFilepunctuation() {
+
+		Driver drive = new Driver();
+
+		HashMap<String, Long> expectedResult = new HashMap<String, Long>();
+		expectedResult.put("a", 6L);
+		expectedResult.put("be", 3L);
+		expectedResult.put("test", 3L);
+		expectedResult.put("in", 3L);
+		expectedResult.put("this", 6L);
+		expectedResult.put("count", 3L);
+		expectedResult.put("multiple", 3L);
+		expectedResult.put("reading", 3L);
+		expectedResult.put("capable", 3L);
+		expectedResult.put("is", 3L);
+		expectedResult.put("program", 6L);
+		expectedResult.put("file", 3L);
+		expectedResult.put("strings", 3L);
+		expectedResult.put("of", 3L);
+		expectedResult.put("files", 3L);
+		expectedResult.put("must", 3L);
+		expectedResult.put("to", 3L);
+
+		String fileName = "C:\\Users\\nithi\\Desktop\\Search_Words\\Sample Files\\Test_File_5.txt";
 		List<String> list = new ArrayList<>();
 		list.add(fileName);
 		drive.startProcessingFile(list);
@@ -95,7 +129,7 @@ public class TestCases {
 		expectedResult.put("must", 6L);
 		expectedResult.put("to", 6L);
 
-		String fileName = "C:\\Users\\nitin.cholleti\\Downloads\\TestData\\Test_File_4.txt";
+		String fileName = "C:\\Users\\nithi\\Desktop\\Search_Words\\Sample Files\\Test_File_4.txt";
 		List<String> list = new ArrayList<>();
 		list.add(fileName);
 		list.add(fileName);
@@ -128,7 +162,7 @@ public class TestCases {
 		expectedResult.put("of", 3L);
 		expectedResult.put("files", 3L);
 		expectedResult.put("must", 3L);
-		String fileName = "C:\\Users\\nitin.cholleti\\Downloads\\TestData\\Test_File_4.txt";
+		String fileName = "C:\\Users\\nithi\\Desktop\\Search_Words\\Sample Files\\Test_File_4.txt";
 		List<String> list = new ArrayList<>();
 		list.add(fileName);
 		drive.startProcessingFile(list);
@@ -139,7 +173,7 @@ public class TestCases {
 	public void emptyFile() {
 
 		Driver drive = new Driver();
-		String fileName = "C:\\Users\\nitin.cholleti\\Downloads\\TestData\\empty_file.txt";
+		String fileName = "C:\\Users\\nithi\\Desktop\\Search_Words\\Sample Files\\empty_file.txt";
 		List<String> list = new ArrayList<>();
 		list.add(fileName);
 		drive.startProcessingFile(list);
