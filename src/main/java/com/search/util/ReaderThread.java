@@ -33,7 +33,6 @@ public class ReaderThread implements Runnable {
 		} finally {
 			try {
 				inputStream.close();
-				//System.out.println(latch.getCount());
 				latch.countDown();
 				} catch (IOException e) {
 				e.printStackTrace();

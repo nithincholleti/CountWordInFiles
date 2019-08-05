@@ -19,13 +19,13 @@ public class CombineMaps {
 
 	public HashMap<String, Long> aggregateData(List<Future<HashMap<String, Long>>> masterList) {
 		for (Future<HashMap<String, Long>> futureResult : masterList) {
-			HashMap<String, Long> hm = null;
+			HashMap<String, Long> combinedHashMap = null;
 			try {
-				hm = futureResult.get();
+				combinedHashMap = futureResult.get();
 			} catch (ExecutionException | InterruptedException e) {
 				e.printStackTrace();
 			}
-			Iterator<Entry<String, Long>> itr = hm.entrySet().iterator();
+			Iterator<Entry<String, Long>> itr = combinedHashMap.entrySet().iterator();
 			while (itr.hasNext()) {
 				Map.Entry<String, Long> pair = (Map.Entry<String, Long>) itr.next();
 				if (masterHashMap.containsKey(pair.getKey())) {

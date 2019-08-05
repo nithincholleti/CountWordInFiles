@@ -18,7 +18,7 @@ public class TestCases {
 	@Test
 	public void testForValidateUserInput() {
 		Driver drive = new Driver();
-		String fileName = "C:\\Users\\nithi\\Desktop\\Search_Words\\Sample Files\\Test_File_4.txt";
+		String fileName = ".\\Resource\\Test_File_4.txt";
 		assertTrue(drive.validateUserInput(fileName));
 		fileName = "abc.txt";
 		assertFalse(drive.validateUserInput(fileName));
@@ -29,12 +29,10 @@ public class TestCases {
 	@Test
 	public void testForValidDirectory() {
 		Driver drive = new Driver();
-		String fileName = "C:\\Users\\nithi\\Desktop\\Search_Words\\Sample Files\\";
-		assertTrue(drive.fileIsDirectory(fileName));
-		fileName = "X:\\Users\\nitin.cholleti\\Downloads\\TestData\\";
-		assertFalse(drive.validateUserInput(fileName));
-		fileName = "";
-		assertFalse(drive.validateUserInput(fileName));
+		String directory = "X:\\Users\\nitin.cholleti\\Downloads\\TestData\\"; 
+		assertFalse(drive.validateUserInput(directory));
+		directory = "";
+		assertFalse(drive.validateUserInput(directory));
 	}
 
 	@Test
@@ -61,7 +59,7 @@ public class TestCases {
 		expectedResult.put("must", 3L);
 		expectedResult.put("to", 3L);
 
-		String fileName = "C:\\Users\\nithi\\Desktop\\Search_Words\\Sample Files\\Test_File_4.txt";
+		String fileName = ".\\Resource\\Test_File_4.txt";
 		List<String> list = new ArrayList<>();
 		list.add(fileName);
 		drive.startProcessingFile(list);
@@ -95,7 +93,7 @@ public class TestCases {
 		expectedResult.put("must", 3L);
 		expectedResult.put("to", 3L);
 
-		String fileName = "C:\\Users\\nithi\\Desktop\\Search_Words\\Sample Files\\Test_File_5.txt";
+		String fileName = ".\\Resource\\Test_File_5.txt";
 		List<String> list = new ArrayList<>();
 		list.add(fileName);
 		drive.startProcessingFile(list);
@@ -129,7 +127,7 @@ public class TestCases {
 		expectedResult.put("must", 6L);
 		expectedResult.put("to", 6L);
 
-		String fileName = "C:\\Users\\nithi\\Desktop\\Search_Words\\Sample Files\\Test_File_4.txt";
+		String fileName = ".\\Resource\\Test_File_4.txt";
 		List<String> list = new ArrayList<>();
 		list.add(fileName);
 		list.add(fileName);
@@ -162,7 +160,7 @@ public class TestCases {
 		expectedResult.put("of", 3L);
 		expectedResult.put("files", 3L);
 		expectedResult.put("must", 3L);
-		String fileName = "C:\\Users\\nithi\\Desktop\\Search_Words\\Sample Files\\Test_File_4.txt";
+		String fileName = ".\\Resource\\Test_File_4.txt";
 		List<String> list = new ArrayList<>();
 		list.add(fileName);
 		drive.startProcessingFile(list);
@@ -173,7 +171,7 @@ public class TestCases {
 	public void emptyFile() {
 
 		Driver drive = new Driver();
-		String fileName = "C:\\Users\\nithi\\Desktop\\Search_Words\\Sample Files\\empty_file.txt";
+		String fileName = ".\\Resource\\empty_file.txt";
 		List<String> list = new ArrayList<>();
 		list.add(fileName);
 		drive.startProcessingFile(list);

@@ -1,0 +1,6 @@
+This is a test program to count strings in a file
+This program must be capable of reading multiple files
+This is a test program to count strings in a file 
+This program must be capable of reading multiple files
+This is a test program to count strings in a file 
+This program must be capable of reading multiple files

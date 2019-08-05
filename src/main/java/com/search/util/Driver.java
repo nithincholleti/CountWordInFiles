@@ -145,19 +145,18 @@ public class Driver {
 		Driver dr = new Driver();
 		List<String> listFile = new ArrayList<String>();
 		while (loopChar.equalsIgnoreCase("Y")) {
-			System.out.println("Please enter file name along with file location; Example: C:\\Test_File_4.txt");
+			System.out.println("Please enter the location of the file, along with file name and extention. (Example: C:\\Folder\\Test_File_4.txt)");
 			String fileName = sc.nextLine();
 			if (dr.validateUserInput(fileName)) {
 				listFile.add(fileName);
 			} else {
 				System.out.println("Invalid file. Check if the file exists on the disk");
-				// System.exit(1);
 			}
-			System.out.println("Do you still want to add files ? (Y/N) \r\n");
+			System.out.println("Do you still want to add one more file to the list? (Y/N) \r\n");
 			loopChar = sc.nextLine();
 		}
 		while (listFile.size() > 0 && true) {
-			System.out.println("Enter the outfile directory path; Example: C:\\output\\");
+			System.out.println("Enter the outfile directory path. (Example: C:\\output\\) ");
 			String outputDirectory = sc.nextLine();
 			if (dr.fileIsDirectory(outputDirectory)) {
 				dr.setOutPutFileDirectory(outputDirectory);

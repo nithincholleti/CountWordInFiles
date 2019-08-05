@@ -30,7 +30,6 @@ public class WorkerMaps implements Callable<HashMap<String, Long>> {
 						}
 					}
 				} catch (Exception ex) {
-					// Thread.sleep(1000);
 					System.out.println("Broke " + Thread.currentThread().getId() + " " + str + " " + queue.size() + " "
 							+ queue.peek() + " " + queue.isEmpty());
 					ex.printStackTrace();
